@@ -4,8 +4,7 @@ import Terminal from "./components/terminal";
 import FileTree from "./components/tree";
 import socket from "./socket";
 import AceEditor from "react-ace";
-
-import { getFileMode } from "./utils/getFileMode";
+import { getFileMode } from "./utils/getFileMode.js";
 
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-github";
@@ -81,16 +80,27 @@ function App() {
         </div>
         <div className="editor">
           {selectedFile && (
-            <p>
-              {selectedFile.replaceAll("/", " > ")}{" "}
-              {isSaved ? "Saved" : "Unsaved"}
-            </p>
+            <div className="file-info">
+              <p>
+                {selectedFile.replaceAll("/", " > ")}{" "}
+                <span className={isSaved ? "status-saved" : "status-unsaved"}>
+                  {isSaved ? "Saved" : "Unsaved"}
+                </span>
+              </p>
+            </div>
           )}
           <AceEditor
             width="100%"
+            height="calc(100% - 30px)" // Adjust height to make space for the file info
             mode={getFileMode({ selectedFile })}
+            theme="github"
             value={code}
             onChange={(e) => setCode(e)}
+            setOptions={{
+              enableBasicAutocompletion: true,
+              enableLiveAutocompletion: true,
+              enableSnippets: true,
+            }}
           />
         </div>
       </div>

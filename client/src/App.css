@@ -1,27 +1,109 @@
+/* Container Styles */
 .playground-container {
   display: flex;
   flex-direction: column;
+  background-color: #1e1e2f;
+  color: #c8c8c8;
+  font-family: 'Arial', sans-serif; /* Updated font family */
+  height: 100vh;
+  overflow: hidden;
 }
 
 .editor-container {
-  min-height: 60vh;
   display: flex;
+  flex-grow: 1;
+  background-color: #2e2e3e;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }
 
 .files {
   padding: 20px;
-  width: 10vw;
-}
-
-.editor {
-  width: 90vw;
+  width: 250px;
+  background-color: #252526;
+  border-right: 1px solid #3c3c3c;
+  color: #e0e0e0;
+  overflow-y: auto;
 }
 
 .file-node {
   cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.file-node:hover {
+  background-color: #37374f;
 }
 
 li {
   list-style: none;
   line-height: 24px;
+}
+
+.editor {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #1e1e2f;
+  color: #f8f8f2;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  border-left: 1px solid #3c3c3c;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.editor p {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  color: #d4d4d4;
+}
+
+.file-info {
+  padding: 5px 0;
+  font-size: 12px;
+}
+
+.status-saved {
+  color: #4caf50; /* Green for saved */
+}
+
+.status-unsaved {
+  color: #f44336; /* Red for unsaved */
+}
+
+/* Scrollbar Styles */
+.editor::-webkit-scrollbar {
+  width: 10px;
+}
+
+.editor::-webkit-scrollbar-thumb {
+  background-color: #444;
+  border-radius: 5px;
+  border: 2px solid #2e2e3e;
+}
+
+.editor::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+/* Terminal Container Styles */
+.terminal-container {
+  background-color: #000000; /* Black background color */
+  border-top: 1px solid #3c3c3c;
+  padding: 20px;
+  height: 300px; /* Increased height */
+  overflow-y: auto;
+}
+
+/* XTerm Custom Styles */
+.xterm-custom .xterm {
+  background-color: #000000; /* Black background color */
+  color: #c8c8c8; /* Text color */
+  font-size: 16px; /* Increased font size */
+  line-height: 1.6;
+  font-family: 'Roboto', sans-serif; /* Updated font family for the terminal */
 }
